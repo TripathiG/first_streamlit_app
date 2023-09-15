@@ -12,7 +12,8 @@ def get_fruityvice_data(get_fruit_data):
 
 def get_load_list():
   with my_cux.cursor() as my_cur:
-    return my_cur.execute("select * from FRUIT_LOAD_LIST").fetchall()
+    my_cur.execute("select * from FRUIT_LOAD_LIST")
+    return my_cur.fetchall()
 
 def insert_snowflake_value(new_fruit):
   with my_cux.cursor() as my_cur:
