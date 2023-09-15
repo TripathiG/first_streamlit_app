@@ -11,11 +11,13 @@ def get_fruityvice_data(get_fruit_data):
   return fruityvice_normalized
 
 def get_load_list():
-  return my_cux.cursor().execute("select * from FRUIT_LOAD_LIST").fetchall()
+  with my_cux.cursor() as my_cur:
+    return my_cur.execute("select * from FRUIT_LOAD_LIST").fetchall()
 
 def insert_snowflake_value(new_fruit):
-  my_cux.cursor().execute("insert into FRUIT_LOAD_LIST values ('from streamlit')")
-  return "Thanks for inserting "+ new_fruit
+  with my_cux.cursor() as my_cur:
+    my_cur.execute("insert into FRUIT_LOAD_LIST values ('from streamlit')")
+    return "Thanks for inserting "+ new_fruit
   
 
 my_fruit_list = pandas.read_csv("https://uni-lab-files.s3.us-west-2.amazonaws.com/dabw/fruit_macros.txt")
